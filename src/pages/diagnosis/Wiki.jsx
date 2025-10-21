@@ -10,9 +10,7 @@ function Wiki() {
 
       <div className="space-y-4 text-slate-600">
         <p className="leading-relaxed">
-          Multiple Sclerosis (MS) is a chronic autoimmune disease that affects the central nervous system,
-          including the brain and spinal cord. It occurs when the immune system attacks the protective
-          covering of nerve fibers, causing communication problems between the brain and the rest of the body.
+          Multiple Sclerosis (MS) is a chronic autoimmune disease that occurs when the immune system attacks the protective covering of nerve fibers, causing communication problems between the brain and the rest of the body.
         </p>
 
         <div className="space-y-2">
@@ -20,7 +18,6 @@ function Wiki() {
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Fatigue and weakness</li>
             <li>Vision problems</li>
-            <li>Muscle spasms and stiffness</li>
             <li>Balance and coordination issues</li>
             <li>Cognitive changes</li>
           </ul>
