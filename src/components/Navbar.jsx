@@ -8,13 +8,13 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-transparent absolute top-0 left-0 w-screen z-50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <Brain className="h-7 w-7 text-teal-600 sm:h-8 sm:w-8" />
-            <span className="text-lg font-semibold text-slate-900 sm:text-xl truncate">
+            <span className="text-lg font-semibold text-teal-600 sm:text-2xl truncate">
               {appName}
             </span>
           </div>
@@ -26,10 +26,10 @@ export default function Navbar() {
                 key={path}
                 to={path}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-md font-medium transition-colors whitespace-nowrap ${
+                  `px-3 py-2 rounded-md text-md font-medium transition-colors whitespace-nowrap hover:text-teal-600  ${
                     isActive
-                      ? "text-teal-600 bg-teal-50 shadow-sm"
-                      : "text-slate-600 hover:text-teal-600 hover:bg-slate-50"
+                      ? "text-teal-600 border border-teal-600"
+                      : "text-slate-600"
                   }`
                 }
               >
