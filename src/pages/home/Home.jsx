@@ -5,7 +5,7 @@ import CTA from "./CTA"
 
 function Home() {
   return (
-    <main>
+    <main className="scrollbar-hidden">
       <Hero />
       <Features />
       <HowItWorks />

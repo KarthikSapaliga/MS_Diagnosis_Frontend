@@ -7,8 +7,8 @@ export default function CTA() {
       as="section"
       className="mx-auto mb-10 max-w-6xl px-6 py-16"
     >
-      <div className="rounded-xl bg-gradient-to-r from-teal-50 via-teal-50 to-teal-50 border border-slate-200 p-8 md:p-10 hover:shadow-lg hover:border-slate-300 transition-all">
-        <div className="grid items-center gap-6 md:grid-cols-2">
+      <div className="rounded-xl bg-gradient-to-br from-teal-50 via-teal-100 to-teal-50 border-2 border-teal-200 p-8 md:p-10 shadow-lg hover:shadow-lg hover:scale-105  hover:border-teal-300 transition-all">
+        <div className="relative grid items-center gap-6 md:grid-cols-2">
           <div>
             <h3 className="text-balance text-2xl font-semibold md:text-3xl text-slate-900">
               Ready to try the demo?
@@ -21,7 +21,7 @@ export default function CTA() {
           <div className="flex md:justify-end">
             <Link
               to="/diagnosis"
-              className="inline-flex items-center justify-center rounded-md bg-teal-600 px-5 py-2.5 text-white shadow-sm transition-colors hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+              className="inline-flex items-center justify-center rounded-md bg-gradient-to-br from-teal-400 to-teal-500 px-5 py-2.5 text-white shadow-sm transition-colors hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
             >
               Start Diagnosis
             </Link>

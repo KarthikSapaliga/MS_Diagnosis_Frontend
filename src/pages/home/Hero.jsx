@@ -27,7 +27,7 @@ export default function Hero() {
 
       <AnimatedSection
         as="div"
-        className="relative mx-auto md:mt-5 max-w-6xl px-6 py-20 md:py-20"
+        className="relative mx-auto md:mt-24 max-w-6xl px-6 py-20 md:py-20"
       >
         <div className="flex flex-col items-center justify-between gap-16 lg:flex-row lg:gap-20">
           <div className="max-w-2xl space-y-8 text-center lg:text-left text-white">
