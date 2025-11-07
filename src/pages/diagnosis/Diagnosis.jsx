@@ -5,8 +5,6 @@ import Wiki from "./Wiki";
 import MRIResult from "./MRIResult";
 import OCTResult from "./OCTResult";
 
-const MRI_THRESHOLD = 0.5;
-
 export default function Diagnosis() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [octFile, setOctFile] = useState(null);
@@ -15,18 +13,25 @@ export default function Diagnosis() {
   const [octResults, setOctResults] = useState(null);
   const [mriProb, setMriProb] = useState(null);
 
+  // MRI Probability thresholds
+  const MRI_LOW_THRESHOLD = 0.2;
+  const MRI_HIGH_THRESHOLD = 0.5;
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    if (file.name.toLowerCase().includes("nii")) {
+    const name = file.name.toLowerCase();
+
+    if (name.includes("nii")) {
       setUploadedFile(file);
       setOctFile(null);
       setOctResults(null);
       await analyzeMRI(file);
     } else if (
-      file.name.toLowerCase().includes(".png") ||
-      file.name.toLowerCase().includes(".jpg")
+      name.endsWith(".png") ||
+      name.endsWith(".jpg") ||
+      name.endsWith(".jpeg")
     ) {
       setOctFile(file);
       await analyzeOCT(file);
@@ -53,8 +58,8 @@ export default function Diagnosis() {
         setMriResults({
           mriProb: data.mri_prob,
           mriPred: data.mri_label,
-          hasMS: data.mri_label == "MS",
-          file: file,
+          hasMS: data.mri_label === "MS",
+          file,
         });
       } else {
         alert("Error: MRI analysis failed.");
@@ -92,7 +97,7 @@ export default function Diagnosis() {
         octLabel: data.oct_pred,
         probability: data.combined_prob,
         finalPrediction: data.final_prediction,
-        hasMS: data.final_prediction == "MS",
+        hasMS: data.final_prediction === "MS",
         file: uploadedFile,
       });
     } catch (err) {
@@ -103,16 +108,24 @@ export default function Diagnosis() {
     }
   };
 
+  // --- Determine when to show OCT upload section ---
+  // const shouldShowOCTUpload =
+  //   mriResults &&
+  //   mriResults.mriProb >= MRI_LOW_THRESHOLD &&
+  //   mriResults.mriProb <= MRI_HIGH_THRESHOLD;
+
+  const shouldShowOCTUpload = mriResults;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
       {/* Header */}
-      <div className="pt-20 pb-16 text-center">
+      <div className="pt-28 pb-16 text-center">
         <h1 className="text-5xl font-bold text-slate-900 mb-6">
           Multiple Sclerosis Diagnosis
         </h1>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto px-6">
           Upload your MRI (NIfTI) image to get started. OCT image may be needed
-          if MRI is borderline.
+          if MRI results are borderline.
         </p>
       </div>
 
@@ -121,6 +134,7 @@ export default function Diagnosis() {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <Wiki />
           <div className="gap-8 flex flex-col">
+            {/* MRI Upload Box */}
             <div className="bg-white rounded-2xl p-8 shadow-lg ring-1 ring-slate-200">
               <div className="flex items-center gap-3 mb-6">
                 <Upload className="h-6 w-6 text-teal-600" />
@@ -140,7 +154,11 @@ export default function Diagnosis() {
                 />
                 <label
                   htmlFor="file-upload"
-                  className={`flex flex-col items-center justify-center w-full h-52 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${uploadedFile ? "border-teal-300 bg-teal-50" : "border-slate-300 bg-slate-50 hover:bg-slate-100"} ${isAnalyzing ? "opacity-50 cursor-not-allowed" : ""}`}
+                  className={`flex flex-col items-center justify-center w-full h-52 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${
+                    uploadedFile
+                      ? "border-teal-300 bg-teal-50"
+                      : "border-slate-300 bg-slate-50 hover:bg-slate-100"
+                  } ${isAnalyzing ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   {uploadedFile ? (
                     <div className="text-center">
@@ -160,6 +178,8 @@ export default function Diagnosis() {
                 </label>
               </div>
             </div>
+
+            {/* Status box */}
             <div className="bg-white rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 h-full flex min-h-8 gap-4">
               <span className="text-lg font-medium">
                 {isAnalyzing ? (
@@ -167,22 +187,18 @@ export default function Diagnosis() {
                     <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-pink-300"></span>
                     <span className="font-medium">Analyzing...</span>
                   </span>
-                ) : uploadedFile && !MRIResult ? (
-                  <span className="text-teal-600">Error Analyzing {uploadedFile.name}</span>
-                ) : uploadedFile && MRIResult ? (
-                  <span className="text-teal-600">Analyzed {uploadedFile.name}</span>
+                ) : uploadedFile && !mriResults ? (
+                  <span className="text-teal-600">
+                    Error Analyzing {uploadedFile.name}
+                  </span>
+                ) : uploadedFile && mriResults ? (
+                  <span className="text-teal-600">
+                    Analyzed {uploadedFile.name}
+                  </span>
                 ) : (
                   <span className="text-red-400">File Not Uploaded</span>
                 )}
               </span>
-              {/* {isAnalyzing && (
-                <div className="text-center py-4">
-                  <div className="inline-flex items-center gap-3 text-teal-600">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-teal-600"></div>
-                    <span className="font-medium">Analyzing...</span>
-                  </div>
-                </div>
-              )}*/}
             </div>
           </div>
         </div>
@@ -190,9 +206,8 @@ export default function Diagnosis() {
         {/* MRI Results */}
         {mriResults && !isAnalyzing && <MRIResult results={mriResults} />}
 
-        {/* OCT Upload if MRI prob below threshold */}
-        {/* OCT Upload if MRI prob below threshold */}
-        {mriResults && mriResults.mriProb < MRI_THRESHOLD && (
+        {/* OCT Upload only if 0.2 <= mriProb <= 0.5 */}
+        {shouldShowOCTUpload && (
           <div className="my-16 bg-white rounded-2xl p-8 shadow-lg ring-1 ring-slate-200">
             <div className="flex items-center gap-3 mb-6">
               <Eye className="h-6 w-6 text-blue-600" />
@@ -200,8 +215,8 @@ export default function Diagnosis() {
             </div>
 
             <p className="text-slate-600 mb-6">
-              MRI probability is below threshold. Please upload your OCT
-              (retinal scan) image for final diagnosis.
+              MRI probability is borderline ({mriResults.mriProb.toFixed(2)}).
+              Please upload your OCT (retinal scan) image for final diagnosis.
             </p>
 
             <div className="space-y-6">
@@ -216,8 +231,12 @@ export default function Diagnosis() {
               <label
                 htmlFor="file-upload-oct"
                 className={`flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-xl cursor-pointer transition-colors
-          ${octFile ? "border-blue-300 bg-blue-50" : "border-slate-300 bg-slate-50 hover:bg-slate-100"}
-          ${isAnalyzing ? "opacity-50 cursor-not-allowed" : ""}`}
+                  ${
+                    octFile
+                      ? "border-blue-300 bg-blue-50"
+                      : "border-slate-300 bg-slate-50 hover:bg-slate-100"
+                  }
+                  ${isAnalyzing ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 {octFile ? (
                   <div className="text-center">
