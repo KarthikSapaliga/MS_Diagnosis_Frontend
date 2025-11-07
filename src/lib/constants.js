@@ -88,7 +88,7 @@ export const consulationService = [
     borderColor: "border-orange-200",
   },
   {
-    name: "MSSI – Chennai Chapter",
+    name: "MSSI – Chennai",
     city: "Chennai",
     contact: "044-66240358 / 9884314021",
     type: "Offline",
@@ -101,7 +101,7 @@ export const consulationService = [
     borderColor: "border-green-200",
   },
   {
-    name: "MSSI – Mumbai Chapter",
+    name: "MSSI – Mumbai",
     city: "Mumbai",
     contact: "+91-22-24037390 / +91-22-24037399",
     type: "Offline",
@@ -114,7 +114,7 @@ export const consulationService = [
     borderColor: "border-pink-200",
   },
   {
-    name: "MSSI – Bengaluru Chapter",
+    name: "MSSI – Bengaluru",
     city: "Bengaluru",
     contact: "+91-80-22992626 / +91-9945012626",
     type: "Offline",
@@ -126,7 +126,7 @@ export const consulationService = [
     borderColor: "border-violet-200",
   },
   {
-    name: "MSSI – Hyderabad Chapter",
+    name: "MSSI – Hyderabad",
     city: "Hyderabad",
     contact: "+91-93900-55598",
     type: "Offline",
