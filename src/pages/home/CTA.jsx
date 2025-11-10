@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles, Brain, Zap, CheckCircle } from "lucide-react";
 export default function CTA() {
   return (
     <section className="mx-auto mb-10 max-w-6xl px-6 py-16">
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 p-1 shadow-2xl hover:shadow-3xl transition-all duration-500">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-500 via-cyan-500 to-blue-600 p-1 shadow-lg transition-all duration-500">
         {/* Inner container */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 p-10 md:p-16">
           {/* Decorative elements */}
@@ -94,7 +94,7 @@ export default function CTA() {
 
             {/* Right side - CTA button */}
             <div className="flex md:justify-end">
-              <div className="w-full md:w-auto">
+              <div className="w-full md:w-auto flex flex-col items-center">
                 <div className="group relative">
                   {/* Button glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-blue-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300 animate-pulse"></div>
@@ -130,31 +130,6 @@ export default function CTA() {
             </div>
           </div>
 
-          {/* Stats section */}
-          <div className="relative mt-12 pt-8 border-t border-slate-200/50">
-            <div className="grid grid-cols-3 gap-6 text-center">
-              <div className="group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  98%
-                </div>
-                <div className="text-sm text-slate-600 mt-1">Accuracy Rate</div>
-              </div>
-              <div className="group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  &lt;5 min
-                </div>
-                <div className="text-sm text-slate-600 mt-1">Analysis Time</div>
-              </div>
-              <div className="group cursor-pointer">
-                <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  Dual AI
-                </div>
-                <div className="text-sm text-slate-600 mt-1">
-                  Modality Check
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
