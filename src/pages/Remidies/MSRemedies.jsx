@@ -34,38 +34,34 @@ function MSRemedies() {
     {
       icon: Brain,
       title: "Cognitive Training",
-      description:
-        "Brain exercises and memory games to maintain cognitive function",
+      description: "Mental exercises to support memory and focus",
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
-      size: "medium",
+      size: "small",
     },
     {
       icon: Dumbbell,
       title: "Physical Therapy",
-      description:
-        "Regular exercise and stretching to maintain mobility and strength",
+      description: "Light exercise and stretching to maintain mobility",
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
-      size: "medium",
+      size: "small",
     },
     {
       icon: Utensils,
       title: "Balanced Diet",
-      description:
-        "Anti-inflammatory foods rich in omega-3, vitamins D and B12",
+      description: "Focus on anti-inflammatory and nutrient-rich foods",
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-50",
       borderColor: "border-green-200",
-      size: "medium",
+      size: "small",
     },
     {
       icon: Bed,
       title: "Quality Sleep",
-      description:
-        "7-9 hours of restful sleep to reduce fatigue & support healing",
+      description: "7–9 hours of restful sleep supports recovery",
       color: "from-indigo-500 to-indigo-600",
       bgColor: "bg-indigo-50",
       borderColor: "border-indigo-200",
@@ -79,13 +75,12 @@ function MSRemedies() {
       color: "from-yellow-500 to-yellow-600",
       bgColor: "bg-yellow-50",
       borderColor: "border-yellow-200",
-      size: "small",
+      size: "medium",
     },
     {
       icon: Droplets,
       title: "Hydration",
-      description:
-        "Stay well-hydrated to support overall health & reduce symptoms",
+      description: "Drink adequate water throughout the day",
       color: "from-cyan-500 to-cyan-600",
       bgColor: "bg-cyan-50",
       borderColor: "border-cyan-200",
@@ -94,8 +89,7 @@ function MSRemedies() {
     {
       icon: Wind,
       title: "Stress Management",
-      description:
-        "Meditation, yoga, and breathing exercises to reduce stress levels",
+      description: "Use breathing, meditation, or yoga to relax",
       color: "from-teal-500 to-teal-600",
       bgColor: "bg-teal-50",
       borderColor: "border-teal-200",
@@ -105,25 +99,16 @@ function MSRemedies() {
       icon: Stethoscope,
       title: "Regular Check-ups",
       description:
-        "Schedule comprehensive neurological exams every 3-6 months, annual MRI scans to monitor lesions, blood tests to check medication efficacy, vision assessments, mobility evaluations, and coordinate care between neurologists, physical therapists, and primary care physicians",
+        "Stay connected with your care team. Schedule neurological check-ups every few months, monitor progress with MRI scans, and discuss any new symptoms. Regular follow-ups help personalize treatment and keep your health on track.",
       color: "from-emerald-500 to-emerald-600",
       bgColor: "bg-emerald-50",
       borderColor: "border-emerald-200",
       size: "large",
     },
     {
-      icon: FlaskConical,
-      title: "Symptom Management",
-      description: "Medications for spasticity, pain, and bladder control",
-      color: "from-pink-500 to-pink-600",
-      bgColor: "bg-pink-50",
-      borderColor: "border-pink-200",
-      size: "medium",
-    },
-    {
       icon: Heart,
       title: "Cardiovascular Health",
-      description: "Regular cardio exercise to improve circulation and energy",
+      description: "Light cardio helps boost stamina & circulation",
       color: "from-red-500 to-red-600",
       bgColor: "bg-red-50",
       borderColor: "border-red-200",
@@ -132,8 +117,7 @@ function MSRemedies() {
     {
       icon: Sparkles,
       title: "Temperature Control",
-      description:
-        "Avoid overheating & use cooling strategies to manage symptoms",
+      description: "Avoid overheating; stay cool to reduce flare-ups",
       color: "from-sky-500 to-sky-600",
       bgColor: "bg-sky-50",
       borderColor: "border-sky-200",
@@ -159,7 +143,7 @@ function MSRemedies() {
       <div className="max-w-6xl mx-auto px-6 pb-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          
+
           <div className="pt-28 pb-16 text-center">
             <h1 className="text-5xl font-bold text-slate-900 mb-6">
               Multiple Sclerosis Management
@@ -171,7 +155,7 @@ function MSRemedies() {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[220px]">
             {remedies.map((remedy, index) => {
               const Icon = remedy.icon;
               return (
@@ -192,11 +176,13 @@ function MSRemedies() {
                       <Icon className="h-7 w-7 text-white" />
                     </div>
 
-                    <h3 className={`text-xl font-bold text-slate-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-indigo-600 transition-all duration-300`}>
+                    <h3
+                      className={`text-xl font-bold mb-2 bg-gradient-to-r ${remedy.color} bg-clip-text text-transparent opacity-80 group-hover:opacity-100 transition-all duration-300`}
+                    >
                       {remedy.title}
                     </h3>
 
-                    <p className="text-slate-600 text-sm leading-relaxed flex-grow">
+                    <p className="text-slate-600 text-md leading-relaxed flex-grow">
                       {remedy.description}
                     </p>
 
