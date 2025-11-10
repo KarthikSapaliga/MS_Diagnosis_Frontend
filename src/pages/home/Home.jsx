@@ -7,7 +7,7 @@ function Home() {
   return (
     <main className="scrollbar-hidden">
       <Hero />
-      <Features />
+      {/* <Features />*/}
       <HowItWorks />
       <CTA />
     </main>
