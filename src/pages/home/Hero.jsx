@@ -16,8 +16,8 @@ export default function Hero() {
       ></video>
       
       {/* Overlay*/}
-      <div class="absolute inset-0 bg-black/60"></div>
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.65)_100%)]"></div>
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.6)_100%)]"></div>
 
 
       {/* Background decoration */}
@@ -59,7 +59,7 @@ export default function Hero() {
               <div className="flex items-center gap-3 text-left">
                 <CheckCircle className="h-5 w-5 shrink-0 text-teal-300" />
                 <span className="text-white/90">
-                  Results in under 5 minutes
+                  Result in under 5 minutes
                 </span>
               </div>
               <div className="flex items-center gap-3 text-left">
