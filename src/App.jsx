@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
@@ -10,9 +11,21 @@ import MSConsultation from './pages/consultation/Consultation'
 import Contact from './pages/contact/Contact'
 
 function App() {
+  
+  const [navBlur, setNavBlur] = useState(false);
+  
+  const handleScroll = (e) => {
+    // console.log(e.target.scrollTop);
+    if(e.target.scrollTop > 100){
+      setNavBlur(true)
+    }else{
+      setNavBlur(false)
+    }
+  };
+  
   return (
-    <div className='h-screen w-screen overflow-y-auto overflow-x-hidden'>
-      <Navbar />
+    <div className='h-screen w-screen overflow-y-auto overflow-x-hidden' onScroll={(e)=>handleScroll(e)}>
+      <Navbar navBlur={navBlur} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/diagnosis" element={<Diagnosis />} />

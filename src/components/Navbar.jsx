@@ -4,11 +4,11 @@ import { useState } from "react";
 
 import { appName, navLinks } from "@/lib/constants";
 
-export default function Navbar() {
+export default function Navbar({navBlur}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-transparent absolute top-0 left-0 w-screen z-50 backdrop-blur-sm">
+    <nav className={`bg-transparent absolute top-0 left-0 w-screen z-50 ${navBlur? 'backdrop-blur-2xl': ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -29,7 +29,7 @@ export default function Navbar() {
                   `px-3 py-2 rounded-md text-md font-medium transition-colors whitespace-nowrap hover:text-teal-600  ${
                     isActive
                       ? "text-teal-600 border border-teal-600"
-                      : "text-slate-600"
+                      : "text-gray-400"
                   }`
                 }
               >
@@ -42,7 +42,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-teal-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-teal-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-colors"
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
