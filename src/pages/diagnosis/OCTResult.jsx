@@ -1,4 +1,10 @@
-import { Brain, CheckCircle, AlertCircle, Activity } from "lucide-react";
+import {
+  Brain,
+  CheckCircle,
+  AlertCircle,
+  Activity,
+  AlertTriangle,
+} from "lucide-react";
 import {
   PieChart,
   Pie,
@@ -259,6 +265,23 @@ function OCTResult({ results }) {
                   : "Methods disagree - combined analysis used"}
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-12 p-6 bg-yellow-50 rounded-2xl shadow-sm border border-yellow-300">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0">
+            <AlertTriangle className="h-6 w-6 text-yellow-600" />
+          </div>
+          <div>
+            <h4 className="font-bold text-yellow-700 mb-2">Warning</h4>
+            <p className="text-sm text-yellow-700 leading-relaxed">
+              The retinal thickness appears to be lower than normal, which may
+              indicate the possibility of related eye or neurological
+              conditions. Please consult your physician or visit a specialist
+              for further evaluation.
+            </p>
           </div>
         </div>
       </div>
