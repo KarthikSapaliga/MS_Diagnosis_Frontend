@@ -16,7 +16,7 @@ function App() {
   
   const handleScroll = (e) => {
     // console.log(e.target.scrollTop);
-    if(e.target.scrollTop > 100){
+    if(e.target.scrollTop > 60){
       setNavBlur(true)
     }else{
       setNavBlur(false)
