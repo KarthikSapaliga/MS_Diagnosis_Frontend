@@ -120,9 +120,10 @@ export default function Diagnosis() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
       {/* Header */}
       <div className="pt-28 pb-16 text-center">
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">
+        <h1 className="text-5xl font-bold bg-gradient-to-br from-teal-500 to-teal-700 text-transparent bg-clip-text pb-6">
           Multiple Sclerosis Diagnosis
         </h1>
+
         <p className="text-lg text-slate-600 max-w-2xl mx-auto px-6">
           Upload your MRI (NIfTI) image to get started. OCT image may be needed
           if MRI results are borderline.

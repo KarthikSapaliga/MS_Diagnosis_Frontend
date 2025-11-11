@@ -47,7 +47,7 @@ export default function HowItWorks() {
         <p className="mt-4 text-pretty text-slate-600">
           Our streamlined workflow ensures accurate MS diagnosis through systematic analysis of multiple imaging modalities.
         </p>*/}
-        <h2 className="text-5xl font-bold text-slate-900 mb-6">
+        {/* <h2 className="text-5xl font-bold text-slate-900 mb-6">
           How it&nbsp;
           <span className="relative inline-block">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600">
@@ -73,7 +73,13 @@ export default function HowItWorks() {
               </defs>
             </svg>
           </span>
-        </h2>
+        </h2>*/}
+        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r  from-cyan-400 to-blue-600 text-transparent bg-clip-text">
+
+
+          How it Works?
+        </h1>
+
         <p className="text-xl text-slate-600 leading-relaxed">
           Our streamlined workflow ensures accurate MS diagnosis through
           systematic analysis of multiple imaging modalities.

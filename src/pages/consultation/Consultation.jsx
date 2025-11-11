@@ -68,9 +68,10 @@ export default function MSConsultation() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
       <div className="pt-28 pb-12 text-center">
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">
+        <h1 className="text-5xl font-bold pb-6 bg-gradient-to-tr from-purple-500 to-indigo-500 text-transparent bg-clip-text">
           MS Consultation Services
         </h1>
+
         <p className="text-lg text-slate-600 max-w-2xl mx-auto px-6">
           Connect with leading medical institutions and support organizations
           specializing in Multiple Sclerosis care across India
