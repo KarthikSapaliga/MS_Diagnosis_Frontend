@@ -155,13 +155,13 @@ function MSRemedies() {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[220px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[220px]">
             {remedies.map((remedy, index) => {
               const Icon = remedy.icon;
               return (
                 <div
                   key={index}
-                  className={`${getSizeClasses(remedy.size)} ${remedy.bgColor} ${remedy.borderColor} border-2 rounded-2xl p-6 shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden relative`}
+                  className={`${getSizeClasses(remedy.size)} ${remedy.bgColor} ${remedy.borderColor} border-2 rounded-2xl p-6 shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden relative hover:scale-105`}
                 >
                   {/* Gradient overlay on hover */}
                   <div
