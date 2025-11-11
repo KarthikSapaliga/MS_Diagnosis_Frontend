@@ -50,7 +50,7 @@ export const consulationService = [
   },
   {
     name: "NIMHANS (Neuro Sciences Dept.)",
-    city: "Bangalore",
+    city: "Bengaluru",
     contact: "+91-80-26995000",
     type: "Offline",
     services:
