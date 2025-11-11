@@ -276,7 +276,7 @@ function OCTResult({ results }) {
           </div>
           <div>
             <h4 className="font-bold text-yellow-700 mb-2">Warning</h4>
-            <p className="text-sm text-yellow-700 leading-relaxed">
+            <p className="text-md text-yellow-700 leading-relaxed">
               The retinal thickness appears to be lower than normal, which may
               indicate the possibility of related eye or neurological
               conditions. Please consult your physician or visit a specialist
