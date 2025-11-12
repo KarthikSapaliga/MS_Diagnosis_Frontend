@@ -58,6 +58,8 @@ function OCTResult({ results }) {
       ? results.octProb
       : 1 - results.octProb) * 100
   ).toFixed(1);
+  
+  const showWarning = results.mriProb < MRI_LOW_THRESHOLD && results.octProb > 1 - results.octProb;
 
   return (
     <div className="bg-white rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 mt-8">
@@ -268,23 +270,28 @@ function OCTResult({ results }) {
           </div>
         </div>
       </div>
+      
+     { showWarning && (
+       
+       <div className="mt-12 p-6 bg-yellow-50 rounded-2xl shadow-sm border border-yellow-300">
+         <div className="flex items-start gap-4">
+           <div className="flex-shrink-0">
+             <AlertTriangle className="h-6 w-6 text-yellow-600" />
+           </div>
+           <div>
+             <h4 className="font-bold text-yellow-700 mb-2">Warning</h4>
+             <p className="text-md text-yellow-700 leading-relaxed">
+               The retinal thickness appears to be lower than normal, which may
+               indicate the possibility of related eye or neurological
+               conditions. Please consult your physician or visit a specialist
+               for further evaluation.
+             </p>
+           </div>
+         </div>
+       </div>
+     )}
 
-      <div className="mt-12 p-6 bg-yellow-50 rounded-2xl shadow-sm border border-yellow-300">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <AlertTriangle className="h-6 w-6 text-yellow-600" />
-          </div>
-          <div>
-            <h4 className="font-bold text-yellow-700 mb-2">Warning</h4>
-            <p className="text-md text-yellow-700 leading-relaxed">
-              The retinal thickness appears to be lower than normal, which may
-              indicate the possibility of related eye or neurological
-              conditions. Please consult your physician or visit a specialist
-              for further evaluation.
-            </p>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 }
