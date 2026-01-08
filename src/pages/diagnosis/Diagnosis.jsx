@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, FileText, Eye } from "lucide-react";
+import { Upload, FileText, Eye, Ban } from "lucide-react";
 
 import Wiki from "./Wiki";
 import MRIResult from "./MRIResult";
@@ -91,13 +91,14 @@ export default function Diagnosis() {
 
       const data = await res.json();
       setOctResults({
+        isOct: data.is_oct,
         mriProb: mriResults.mriProb,
         mriPred: mriResults.mriPred,
-        octProb: data.oct_prob,
-        octLabel: data.oct_pred,
-        probability: data.combined_prob,
-        finalPrediction: data.final_prediction,
-        hasMS: data.final_prediction === "MS",
+        octProb: data.oct_prob || null,
+        octLabel: data.oct_pred || null,
+        probability: data.combined_prob || null,
+        finalPrediction: data.final_prediction || null,
+        hasMS: data.final_prediction === "MS" || null,
         file: uploadedFile,
       });
     } catch (err) {
@@ -107,12 +108,6 @@ export default function Diagnosis() {
       setIsAnalyzing(false);
     }
   };
-
-  // --- Determine when to show OCT upload section ---
-  // const shouldShowOCTUpload =
-  //   mriResults &&
-  //   mriResults.mriProb >= MRI_LOW_THRESHOLD &&
-  //   mriResults.mriProb <= MRI_HIGH_THRESHOLD;
 
   const shouldShowOCTUpload = mriResults;
 
@@ -291,7 +286,18 @@ export default function Diagnosis() {
         )}
 
         {/* OCT Results */}
-        {octResults && !isAnalyzing && <OCTResult results={octResults} />}
+        {octResults && octResults.isOct && !isAnalyzing && (
+          <OCTResult results={octResults} />
+        )}
+
+        {octResults && !octResults.isOct && !isAnalyzing && (
+          <div className="bg-white rounded-2xl p-8 shadow-lg ring-1 ring-slate-200 mt-8">
+            <span className="font-medium flex gap-3 text-red-600">
+              <Ban />
+              Enter a Valid OCT image
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
